@@ -2,23 +2,25 @@ import { faker } from '@faker-js/faker';
 import db from './postgres_init.js';
 import pgp from 'pg-promise';
 
-function createRandomTestEntry() {
-  const product = faker.commerce.productName();
+function createRandomProduct() {
+  const name = faker.commerce.productName();
   const price = faker.commerce.price();
+  const description = faker.commerce.productDescription();
 
-    return new pgp.ParameterizedQuery({text: 'INSERT INTO test(product, price) VALUES($1, $2)', 
+    return new pgp.ParameterizedQuery({text: 'INSERT INTO product(name, price, description) VALUES($1, $2, $3)', 
     values: [
-        product,
+        name,
         price,
+        description,
     ]});
 };
 
-const queries = Array.from({ length: 100 }, () => db.none(createRandomTestEntry()));
+const queries = Array.from({ length: 100 }, () => db.none(createRandomProduct()));
 
 
 Promise.all(queries)
   .then(() => {
-    console.log("100 test entries added");
+    console.log("100 product entries added");
   })
   .catch(error => {
     console.error(error.message);
