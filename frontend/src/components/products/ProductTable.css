@@ -1,0 +1,31 @@
+.container {
+  padding: 2px 16px;
+}
+
+/*mobile*/
+.product.container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  padding: 10px;
+  grid-gap: 20px;
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+}
+
+/*tablet*/
+@media only screen and (min-width: 500px) {
+  .product.container {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+/*desktop*/
+@media only screen and (min-width: 600px) {
+  .product.container {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+  }
+}
+
+button {
+  margin: 6px;
+}

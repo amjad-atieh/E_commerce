@@ -1,0 +1,14 @@
+.skeleton-content {
+  color: transparent;
+  height: 170px;
+  /*background-color: #ddd;*/
+}
+
+@keyframes skeletonSlide {
+  from {
+    left: -100px;
+  }
+  to {
+    left: calc(100% + 100px);
+  }
+}
